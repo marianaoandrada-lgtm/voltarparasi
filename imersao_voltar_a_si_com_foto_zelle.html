@@ -1,0 +1,407 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Imersão Voltar para Si — Luciana Tavares</title>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@tabler/icons-webfont@latest/dist/tabler-icons.min.css" />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;1,400&family=Inter:wght@300;400;500;600&display=swap" />
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  :root {
+    --brown-deep: #3b1f10;
+    --brown-mid: #6b3a22;
+    --cream: #f5efe6;
+    --cream-dark: #e8ddd0;
+    --blush: #c4877a;
+    --blush-light: #e8b8ac;
+    --text-dark: #2c1a10;
+    --text-mid: #5a3826;
+  }
+  html { scroll-behavior: smooth; }
+  body { background: var(--cream); font-family: 'Inter', sans-serif; color: var(--text-dark); }
+
+  /* HERO */
+  .hero {
+    background: linear-gradient(160deg, #2a1208 0%, #4e2511 45%, #7a4128 100%);
+    min-height: 100svh;
+    display: flex;
+    flex-direction: column;
+    position: relative;
+    overflow: hidden;
+  }
+  .hero-inner { display: flex; align-items: stretch; flex: 1; min-height: 100svh; }
+  .hero-img-col { flex: 0 0 45%; position: relative; overflow: hidden; }
+  .hero-img-col img { width: 100%; height: 100%; object-fit: cover; object-position: center top; display: block; }
+  .hero-img-col::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(to right, transparent 60%, #2a1208 100%);
+  }
+  .hero-txt-col {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding: 3rem 3rem 3rem 2.5rem;
+  }
+  .hero-tag {
+    display: inline-block;
+    border: 1px solid rgba(255,255,255,0.35);
+    color: rgba(255,255,255,0.8);
+    font-size: 10px;
+    letter-spacing: 2.5px;
+    text-transform: uppercase;
+    padding: 5px 16px;
+    border-radius: 20px;
+    margin-bottom: 1.4rem;
+    font-weight: 500;
+    align-self: flex-start;
+  }
+  .hero h1 { font-family: 'Playfair Display', serif; font-size: clamp(2.4rem, 5vw, 3.6rem); color: #fff; font-weight: 400; line-height: 1.1; margin-bottom: 0.75rem; }
+  .hero h1 em { font-style: italic; color: var(--blush-light); }
+  .hero-sub { font-size: 1rem; color: rgba(255,255,255,0.68); font-weight: 300; line-height: 1.65; margin-bottom: 1.75rem; }
+  .hero-chips { display: flex; flex-wrap: wrap; gap: 0.6rem; margin-bottom: 2rem; }
+  .hero-chip { display: flex; align-items: center; gap: 6px; background: rgba(255,255,255,0.08); border: 1px solid rgba(255,255,255,0.14); border-radius: 30px; padding: 6px 14px; font-size: 0.78rem; color: rgba(255,255,255,0.88); }
+  .hero-chip i { color: var(--blush-light); font-size: 14px; }
+  .price-box { background: rgba(255,255,255,0.07); border: 1px solid rgba(255,255,255,0.14); border-radius: 16px; padding: 1.1rem 1.75rem; display: inline-flex; flex-direction: column; align-items: flex-start; margin-bottom: 1.75rem; }
+  .price-old { font-size: 0.8rem; color: rgba(255,255,255,0.4); text-decoration: line-through; }
+  .price-new { font-family: 'Playfair Display', serif; font-size: 2.8rem; font-weight: 600; color: #fff; line-height: 1.1; }
+  .price-note { font-size: 0.68rem; color: rgba(255,255,255,0.48); margin-top: 3px; letter-spacing: 0.5px; }
+  .cta-btn { display: inline-flex; align-items: center; gap: 8px; background: var(--blush); color: #fff; padding: 15px 34px; border-radius: 50px; font-size: 0.95rem; font-weight: 600; letter-spacing: 0.3px; cursor: pointer; border: none; transition: background 0.2s, transform 0.15s; text-decoration: none; }
+  .cta-btn:hover { background: #b8706a; transform: translateY(-1px); }
+  .cta-btn i { font-size: 18px; }
+  .vagas-urgencia { margin-top: 0.85rem; font-size: 0.75rem; color: rgba(255,255,255,0.42); display: flex; align-items: center; gap: 5px; }
+  .vagas-urgencia i { color: var(--blush-light); font-size: 13px; }
+
+  @media (max-width: 700px) {
+    .hero-inner { flex-direction: column; min-height: auto; }
+    .hero { min-height: auto; }
+    .hero-img-col { flex: none; height: 420px; }
+    .hero-img-col img { object-position: center 10%; }
+    .hero-img-col::after { background: linear-gradient(to bottom, transparent 50%, #2a1208 100%); }
+    .hero-txt-col { padding: 1.5rem 1.5rem 2.5rem; }
+    .hero-tag { align-self: center; }
+    .hero h1 { font-size: clamp(2rem, 8vw, 2.8rem); text-align: center; }
+    .hero-sub { text-align: center; }
+    .hero-chips { justify-content: center; }
+    .price-box { align-self: center; align-items: center; }
+    .cta-btn { width: 100%; justify-content: center; }
+    .vagas-urgencia { justify-content: center; }
+  }
+
+  .section { padding: 3rem 1.5rem; }
+  .section-inner { max-width: 700px; margin: 0 auto; }
+  .section-label { font-size: 10px; letter-spacing: 2.5px; text-transform: uppercase; color: var(--blush); margin-bottom: 0.5rem; font-weight: 600; }
+  .section-title { font-family: 'Playfair Display', serif; font-size: clamp(1.5rem, 4vw, 2rem); color: var(--brown-deep); font-weight: 400; line-height: 1.3; margin-bottom: 1.25rem; }
+  .section-title em { color: var(--blush); font-style: italic; }
+  .divider { height: 1px; background: var(--cream-dark); margin: 0 1.5rem; }
+
+  .urgency-bar { background: var(--blush); padding: 1rem 1.5rem; text-align: center; font-size: 0.85rem; font-weight: 600; color: #fff; letter-spacing: 0.3px; display: flex; align-items: center; justify-content: center; gap: 8px; }
+  .urgency-bar i { font-size: 17px; }
+
+  .schedule { background: var(--brown-deep); padding: 3rem 1.5rem; }
+  .schedule .section-title { color: #fff; }
+  .schedule .section-label { color: var(--blush-light); }
+  .timeline { margin-top: 1.5rem; }
+  .tl-item { display: flex; gap: 1rem; margin-bottom: 1.2rem; align-items: flex-start; }
+  .tl-time { min-width: 72px; font-size: 0.74rem; font-weight: 600; color: var(--blush-light); letter-spacing: 0.5px; padding-top: 3px; }
+  .tl-dot-wrap { display: flex; flex-direction: column; align-items: center; }
+  .tl-dot { width: 9px; height: 9px; border-radius: 50%; background: var(--blush); flex-shrink: 0; margin-top: 4px; }
+  .tl-line { width: 1px; flex: 1; background: rgba(255,255,255,0.1); min-height: 22px; }
+  .tl-label { font-size: 0.88rem; color: rgba(255,255,255,0.9); line-height: 1.5; }
+  .tl-label small { display: block; font-size: 0.74rem; color: rgba(255,255,255,0.4); margin-top: 2px; }
+
+  .pillars-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(170px, 1fr)); gap: 1rem; margin-top: 1.5rem; }
+  .pillar-card { background: #fff; border: 0.5px solid var(--cream-dark); border-radius: 16px; padding: 1.25rem; }
+  .pillar-icon { width: 38px; height: 38px; border-radius: 10px; background: var(--cream); display: flex; align-items: center; justify-content: center; margin-bottom: 0.75rem; }
+  .pillar-icon i { font-size: 19px; color: var(--blush); }
+  .pillar-name { font-family: 'Playfair Display', serif; font-size: 1rem; color: var(--brown-deep); font-weight: 600; margin-bottom: 4px; }
+  .pillar-q { font-size: 0.78rem; color: var(--blush); font-style: italic; }
+
+  .checklist { margin-top: 1.25rem; }
+  .check-item { display: flex; gap: 12px; align-items: flex-start; margin-bottom: 1rem; font-size: 0.92rem; color: var(--text-mid); line-height: 1.6; }
+  .check-item i { font-size: 17px; color: var(--blush); flex-shrink: 0; margin-top: 1px; }
+
+  .phrase-block { background: var(--brown-mid); padding: 3rem 1.5rem; text-align: center; }
+  .phrase-main { font-family: 'Playfair Display', serif; font-size: clamp(1.3rem, 4vw, 1.9rem); color: var(--blush-light); font-style: italic; line-height: 1.5; margin-bottom: 0.75rem; }
+  .phrase-sub { font-size: 0.82rem; color: rgba(255,255,255,0.45); }
+
+  .host-section { background: var(--cream-dark); padding: 3rem 1.5rem; }
+  .host-card { display: flex; gap: 2rem; align-items: flex-start; flex-wrap: wrap; margin-top: 1.25rem; }
+  .host-photo { width: 110px; height: 110px; border-radius: 50%; overflow: hidden; flex-shrink: 0; border: 3px solid var(--blush-light); }
+  .host-photo img { width: 100%; height: 100%; object-fit: cover; object-position: center top; }
+  .host-name { font-family: 'Playfair Display', serif; font-size: 1.3rem; color: var(--brown-deep); font-weight: 400; margin-bottom: 4px; }
+  .host-title { font-size: 0.79rem; color: var(--blush); line-height: 1.7; font-style: italic; }
+  .host-bio { margin-top: 0.75rem; font-size: 0.88rem; color: var(--text-mid); line-height: 1.8; }
+  .host-insta { margin-top: 0.75rem; font-size: 0.82rem; color: var(--blush); font-weight: 500; }
+
+  .zelle-section { background: var(--cream); padding: 3rem 1.5rem; }
+  .zelle-pay-btn { display: flex; align-items: center; justify-content: space-between; gap: 1rem; background: #fff; border: 1.5px solid var(--cream-dark); border-radius: 16px; padding: 1.25rem 1.5rem; max-width: 480px; margin: 1.5rem auto 0; cursor: pointer; transition: box-shadow 0.2s, border-color 0.2s; box-shadow: 0 1px 8px rgba(59,31,16,0.06); width: 100%; }
+  .zelle-pay-btn:hover { border-color: var(--blush); box-shadow: 0 4px 20px rgba(196,135,122,0.18); }
+  .zelle-pay-left { display: flex; align-items: center; gap: 1rem; }
+  .zelle-avatar { width: 50px; height: 50px; border-radius: 50%; background: var(--cream-dark); display: flex; align-items: center; justify-content: center; font-family: 'Playfair Display', serif; font-size: 1.1rem; color: var(--brown-mid); flex-shrink: 0; }
+  .zelle-pay-info { text-align: left; }
+  .zelle-pay-name { font-weight: 600; font-size: 0.9rem; color: var(--text-dark); }
+  .zelle-pay-phone { font-size: 0.82rem; color: var(--brown-mid); margin-top: 2px; }
+  .zelle-pay-right { display: flex; flex-direction: column; align-items: flex-end; gap: 4px; }
+  .zelle-logo-inline { font-size: 1.15rem; font-weight: 700; color: #6d1ed4; letter-spacing: -0.5px; }
+  .zelle-tap-hint { font-size: 0.7rem; color: #aaa; display: flex; align-items: center; gap: 3px; }
+  .zelle-tap-hint i { font-size: 13px; }
+  .zelle-steps { max-width: 480px; margin: 1.25rem auto 0; background: #fff; border-radius: 14px; padding: 1.25rem 1.5rem; border: 0.5px solid var(--cream-dark); }
+  .zelle-step { display: flex; gap: 12px; align-items: flex-start; margin-bottom: 0.9rem; font-size: 0.85rem; color: var(--text-mid); line-height: 1.6; }
+  .zelle-step:last-child { margin-bottom: 0; }
+  .step-num { width: 22px; height: 22px; border-radius: 50%; background: var(--blush); color: #fff; font-size: 0.7rem; font-weight: 700; display: flex; align-items: center; justify-content: center; flex-shrink: 0; margin-top: 1px; }
+
+  .modal-overlay { display: none; position: fixed; inset: 0; background: rgba(30,10,5,0.75); backdrop-filter: blur(4px); z-index: 1000; align-items: center; justify-content: center; padding: 1.5rem; }
+  .modal-overlay.open { display: flex; }
+  .modal-box { background: #fff; border-radius: 24px; padding: 2rem 1.75rem; max-width: 360px; width: 100%; text-align: center; position: relative; animation: popIn 0.25s ease; }
+  @keyframes popIn { from { opacity:0; transform:scale(0.92); } to { opacity:1; transform:scale(1); } }
+  .modal-close { position: absolute; top: 1rem; right: 1rem; background: var(--cream-dark); border: none; border-radius: 50%; width: 32px; height: 32px; display: flex; align-items: center; justify-content: center; cursor: pointer; font-size: 18px; color: var(--brown-mid); }
+  .modal-avatar { width: 60px; height: 60px; border-radius: 50%; background: var(--cream-dark); display: flex; align-items: center; justify-content: center; font-family: 'Playfair Display', serif; font-size: 1.3rem; color: var(--brown-mid); margin: 0 auto 0.75rem; }
+  .modal-name { font-weight: 700; font-size: 1rem; color: var(--text-dark); letter-spacing: 0.5px; margin-bottom: 2px; }
+  .modal-phone { font-weight: 600; font-size: 0.92rem; color: var(--brown-mid); margin-bottom: 2px; }
+  .modal-account { font-size: 0.78rem; color: #999; margin-bottom: 1.1rem; }
+  .modal-qr { background: #fff; border: 1px solid #e8e8e8; border-radius: 14px; padding: 1rem; display: inline-block; margin-bottom: 0.85rem; }
+  .modal-qr img { width: 200px; height: 200px; display: block; }
+  .modal-zelle-logo { font-size: 1.35rem; font-weight: 700; color: #6d1ed4; letter-spacing: -0.5px; margin-bottom: 0.4rem; }
+  .modal-note { font-size: 0.72rem; color: #bbb; line-height: 1.5; }
+
+  .cta-section { background: var(--brown-deep); padding: 3.5rem 1.5rem; text-align: center; }
+  .cta-section .section-title { color: #fff; margin-bottom: 0.75rem; }
+  .cta-section .section-label { color: var(--blush-light); }
+  .vagas-badge { display: inline-block; border: 1px solid var(--blush); color: var(--blush-light); font-size: 0.75rem; letter-spacing: 1.5px; text-transform: uppercase; padding: 5px 18px; border-radius: 20px; margin-bottom: 1.25rem; }
+  .includes-grid { display: flex; justify-content: center; gap: 1.75rem; flex-wrap: wrap; margin: 1.25rem 0 1.75rem; }
+  .include-item { display: flex; flex-direction: column; align-items: center; gap: 5px; font-size: 0.76rem; color: rgba(255,255,255,0.55); }
+  .include-item i { font-size: 21px; color: var(--blush-light); }
+  .cta-price-old { font-size: 0.85rem; color: rgba(255,255,255,0.38); text-decoration: line-through; margin-bottom: 4px; }
+  .cta-price-new { font-family: 'Playfair Display', serif; font-size: 3rem; color: #fff; font-weight: 400; line-height: 1; }
+  .cta-price-note { font-size: 0.75rem; color: rgba(255,255,255,0.35); margin-top: 5px; margin-bottom: 1.75rem; }
+  .cta-note { font-size: 0.74rem; color: rgba(255,255,255,0.35); margin-top: 0.75rem; }
+  .footer { background: var(--brown-deep); border-top: 1px solid rgba(255,255,255,0.06); padding: 1.25rem 1.5rem; text-align: center; font-size: 0.74rem; color: rgba(255,255,255,0.25); }
+</style>
+</head>
+<body>
+
+<section class="hero">
+  <div class="hero-inner">
+    <div class="hero-img-col">
+      <img src="IMG_5010_Original.png" alt="Luciana Tavares" />
+    </div>
+    <div class="hero-txt-col">
+      <div class="hero-tag">Imersão · 18 de Julho · Philadelphia</div>
+      <h1>Voltar<br><em>para Si</em></h1>
+      <p class="hero-sub">Um dia para parar o automático,<br>sentir e se ouvir novamente.</p>
+      <div class="hero-chips">
+        <div class="hero-chip"><i class="ti ti-map-pin"></i> Philadelphia, PA</div>
+        <div class="hero-chip"><i class="ti ti-calendar"></i> 18 de Julho</div>
+        <div class="hero-chip"><i class="ti ti-clock"></i> 9am às 6pm</div>
+        <div class="hero-chip"><i class="ti ti-users"></i> 15 vagas</div>
+      </div>
+      <div class="price-box">
+        <div class="price-old">de US$ 197</div>
+        <div class="price-new">US$ 97</div>
+        <div class="price-note">pré-venda especial · tudo incluso</div>
+      </div>
+      <a class="cta-btn" href="#pagamento">
+        <i class="ti ti-lock"></i>
+        Quero garantir minha vaga
+      </a>
+      <div class="vagas-urgencia">
+        <i class="ti ti-alert-circle"></i>
+        Apenas 15 vagas disponíveis
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="urgency-bar">
+  <i class="ti ti-flame"></i>
+  Pré-venda com desconto especial · 18 de Julho · Philadelphia
+  <i class="ti ti-flame"></i>
+</div>
+
+<section class="section" style="background:var(--cream);">
+  <div class="section-inner">
+    <div class="section-label">Para quem é essa imersão</div>
+    <h2 class="section-title">Existem fases em que a vida<br><em>continua funcionando por fora.</em></h2>
+    <p style="font-size:0.975rem;line-height:1.9;color:var(--text-mid);">
+      Mas, por dentro, alguma coisa começa a pedir atenção. Você percebe que está cansada de sustentar os mesmos padrões, que algumas perguntas continuam sem resposta, e que talvez tenha passado tanto tempo cuidando de tudo e de todos que se afastou de si mesma.<br><br>
+      Foi para mulheres vivendo esse momento que nasceu a <strong>Imersão Voltar para Si</strong>. Um dia inteiro para parar o automático, olhar para dentro e construir clareza sobre quem você é hoje.
+    </p>
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<section class="section" style="background:#fff;">
+  <div class="section-inner">
+    <div class="section-label">O que você vai levar</div>
+    <h2 class="section-title">Você vai sair com<br><em>mais clareza</em> sobre:</h2>
+    <div class="checklist">
+      <div class="check-item"><i class="ti ti-circle-check"></i><span>Quem você é hoje e o que ficou para trás no caminho</span></div>
+      <div class="check-item"><i class="ti ti-circle-check"></i><span>O que você não quer mais carregar — padrões, crenças e comportamentos que te drenam</span></div>
+      <div class="check-item"><i class="ti ti-circle-check"></i><span>Quais limites você precisa construir para se proteger e avançar</span></div>
+      <div class="check-item"><i class="ti ti-circle-check"></i><span>Quais decisões você precisa tomar para se mover</span></div>
+      <div class="check-item"><i class="ti ti-circle-check"></i><span>Por que você continua cansada mesmo quando tudo parece estar bem</span></div>
+      <div class="check-item"><i class="ti ti-circle-check"></i><span>Por que certos ciclos se repetem — e como finalmente quebrá-los</span></div>
+    </div>
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<section class="section" style="background:var(--cream);">
+  <div class="section-inner">
+    <div class="section-label">Os três pilares</div>
+    <h2 class="section-title">Um dia inteiro em torno de<br><em>três perguntas essenciais</em></h2>
+    <div class="pillars-grid">
+      <div class="pillar-card">
+        <div class="pillar-icon"><i class="ti ti-eye"></i></div>
+        <div class="pillar-name">Consciência</div>
+        <div class="pillar-q">O que está acontecendo comigo?</div>
+      </div>
+      <div class="pillar-card">
+        <div class="pillar-icon"><i class="ti ti-user-heart"></i></div>
+        <div class="pillar-name">Identidade</div>
+        <div class="pillar-q">Quem eu me tornei?</div>
+      </div>
+      <div class="pillar-card">
+        <div class="pillar-icon"><i class="ti ti-compass"></i></div>
+        <div class="pillar-name">Direção</div>
+        <div class="pillar-q">Para onde eu quero ir agora?</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="schedule">
+  <div class="section-inner">
+    <div class="section-label">Programação do dia</div>
+    <h2 class="section-title">Um dia completo,<br>tudo incluso</h2>
+    <div class="timeline">
+      <div class="tl-item"><div class="tl-time">9:00 am</div><div class="tl-dot-wrap"><div class="tl-dot"></div><div class="tl-line"></div></div><div class="tl-label">Welcome Coffee<small>Chegada, acolhimento e conexão</small></div></div>
+      <div class="tl-item"><div class="tl-time">9:30 am</div><div class="tl-dot-wrap"><div class="tl-dot"></div><div class="tl-line"></div></div><div class="tl-label">Início da Imersão<small>Consciência · Identidade · Direção</small></div></div>
+      <div class="tl-item"><div class="tl-time">1:00 pm</div><div class="tl-dot-wrap"><div class="tl-dot"></div><div class="tl-line"></div></div><div class="tl-label">Almoço<small>Incluso — momento de integração</small></div></div>
+      <div class="tl-item"><div class="tl-time">2:00 pm</div><div class="tl-dot-wrap"><div class="tl-dot"></div><div class="tl-line"></div></div><div class="tl-label">Tarde — Aprofundamento<small>Padrões emocionais, crenças e decisões</small></div></div>
+      <div class="tl-item"><div class="tl-time">4:30 pm</div><div class="tl-dot-wrap"><div class="tl-dot"></div><div class="tl-line"></div></div><div class="tl-label">Coffee Break<small>Incluso</small></div></div>
+      <div class="tl-item"><div class="tl-time">5:00 pm</div><div class="tl-dot-wrap"><div class="tl-dot"></div><div class="tl-line"></div></div><div class="tl-label">Encerramento<small>Clareza, direção e próximos passos</small></div></div>
+      <div class="tl-item"><div class="tl-time">6:00 pm</div><div class="tl-dot-wrap"><div class="tl-dot"></div></div><div class="tl-label">Encerramento oficial</div></div>
+    </div>
+  </div>
+</section>
+
+<div class="phrase-block">
+  <p class="phrase-main">"Não é um evento motivacional.<br>É um processo de consciência."</p>
+  <p class="phrase-sub">— Luciana Tavares</p>
+</div>
+
+<section class="host-section">
+  <div class="section-inner">
+    <div class="section-label">Com quem você vai estar</div>
+    <div class="host-card">
+      <div class="host-photo"><img src="IMG_5010_Original.png" alt="Luciana Tavares" /></div>
+      <div style="flex:1;min-width:200px;">
+        <div class="host-name">Luciana Tavares</div>
+        <div class="host-title">Psicanalista cristã · Líder e mentora de mulheres<br>Master Life Coach · Analista de Perfil Comportamental DISC</div>
+        <p class="host-bio">Luciana acompanha mulheres que estão em fases de transição — quando a vida por fora segue, mas algo por dentro pede atenção. Seu trabalho une psicanálise, fé e autoconhecimento para guiar mulheres de volta a si mesmas.</p>
+        <div class="host-insta">@psi.lucianatavares</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="zelle-section" id="pagamento">
+  <div class="section-inner">
+    <div class="section-label">Pagamento</div>
+    <h2 class="section-title">Garante sua vaga<br><em>agora mesmo</em></h2>
+    <p style="font-size:0.9rem;color:var(--text-mid);line-height:1.75;">
+      Toque no card abaixo para abrir o QR Code do Zelle.<br>
+      Após pagar, envie o comprovante via WhatsApp para o número
+      <strong style="color:var(--brown-deep);">267-770-3505</strong>.
+    </p>
+    <button class="zelle-pay-btn" onclick="openZelle()">
+      <div class="zelle-pay-left">
+        <div class="zelle-avatar">LT</div>
+        <div class="zelle-pay-info">
+          <div class="zelle-pay-name">LUCIANA TAVARES</div>
+          <div class="zelle-pay-phone">267-770-3505</div>
+        </div>
+      </div>
+      <div class="zelle-pay-right">
+        <div class="zelle-logo-inline"><span style="color:#8a2be2;">Z</span>elle&reg;</div>
+        <div class="zelle-tap-hint"><i class="ti ti-qrcode"></i> Ver QR Code</div>
+      </div>
+    </button>
+    <div class="zelle-steps">
+      <div class="zelle-step"><div class="step-num">1</div><span>Toque no card acima para abrir o QR Code do Zelle</span></div>
+      <div class="zelle-step"><div class="step-num">2</div><span>Ou abra seu app bancário, selecione Zelle e busque o número <strong>267-770-3505</strong></span></div>
+      <div class="zelle-step"><div class="step-num">3</div><span>Envie <strong>US$ 97</strong> com a descrição <strong>"Imersão Voltar para Si"</strong></span></div>
+      <div class="zelle-step"><div class="step-num">4</div><span>Envie o comprovante via WhatsApp para <strong>267-770-3505</strong></span></div>
+    </div>
+  </div>
+</section>
+
+<div class="modal-overlay" id="zelleModal" onclick="closeOnOverlay(event)">
+  <div class="modal-box">
+    <button class="modal-close" onclick="closeZelle()"><i class="ti ti-x"></i></button>
+    <div class="modal-avatar">LT</div>
+    <div class="modal-name">LUCIANA TAVARES</div>
+    <div class="modal-phone">267-770-3505</div>
+    <div class="modal-account">Deposit to Checking ...3322</div>
+    <div class="modal-qr">
+      <img src="WhatsApp Image 2026-03-17 at 20.05.33.jpeg" alt="QR Code Zelle" />
+    </div>
+    <div class="modal-zelle-logo"><span style="color:#8a2be2;">Z</span>elle<sup style="font-size:0.5em;vertical-align:super;">&reg;</sup></div>
+    <div class="modal-note">Após pagar, envie o comprovante via WhatsApp para 267-770-3505</div>
+  </div>
+</div>
+
+<section class="cta-section">
+  <div class="section-inner">
+    <div class="vagas-badge">Apenas 15 vagas disponíveis</div>
+    <h2 class="section-title">Talvez você não precise<br>se encontrar.</h2>
+    <p style="color:rgba(255,255,255,0.6);font-size:0.95rem;margin-bottom:1.5rem;line-height:1.8;">
+      Talvez precise <strong style="color:var(--blush-light);">voltar para si.</strong><br>É isso que vamos fazer juntas.
+    </p>
+    <div class="includes-grid">
+      <div class="include-item"><i class="ti ti-coffee"></i>Welcome Coffee</div>
+      <div class="include-item"><i class="ti ti-tools-kitchen-2"></i>Almoço incluso</div>
+      <div class="include-item"><i class="ti ti-cookie"></i>Coffee Break</div>
+      <div class="include-item"><i class="ti ti-book"></i>Material</div>
+    </div>
+    <div class="cta-price-old">de US$ 197</div>
+    <div class="cta-price-new">US$ 97</div>
+    <div class="cta-price-note">18.07 · Philadelphia · 9am às 6pm · tudo incluso</div>
+    <a class="cta-btn" href="#pagamento">
+      <i class="ti ti-lock"></i>
+      Pague via Zelle e garanta sua vaga
+    </a>
+    <p class="cta-note">Após o pagamento, envie o comprovante via WhatsApp · 267-770-3505</p>
+  </div>
+</section>
+
+<footer class="footer">
+  @psi.lucianatavares · Imersão Voltar para Si · Philadelphia · 18 de Julho · 9am às 6pm
+</footer>
+
+<script>
+  function openZelle() {
+    document.getElementById('zelleModal').classList.add('open');
+    document.body.style.overflow = 'hidden';
+  }
+  function closeZelle() {
+    document.getElementById('zelleModal').classList.remove('open');
+    document.body.style.overflow = '';
+  }
+  function closeOnOverlay(e) {
+    if (e.target === document.getElementById('zelleModal')) closeZelle();
+  }
+  document.addEventListener('keydown', function(e) {
+    if (e.key === 'Escape') closeZelle();
+  });
+</script>
+</body>
+</html>
